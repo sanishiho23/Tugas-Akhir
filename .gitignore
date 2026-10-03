@@ -1,0 +1,22 @@
+# OS / Explorer
+Thumbs.db
+.DS_Store
+ehthumbs.db
+Desktop.ini
+
+# Editor
+*.swp
+*~
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.env
+
+# Lokal AI / WorkBuddy
+.workbuddy-ai/
+
+# Temp / draft sampah
+*.tmp
+~$*
