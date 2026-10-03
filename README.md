@@ -117,3 +117,4 @@
 - **Etika akademik UGM:** `Booklet-Panduan-Etika-Akademik-pada-Pendidikan-Tinggi-UGM-V3.pdf`
 - **Contoh laporan:** `Contoh Skripsi ZTA.pdf`, `Implementasi ZTA.pdf`
 - **Repo GitHub:** https://github.com/sanishiho23/Tugas-Akhir
+- **Roadmap:** `roadmap.md` — linimasa penyelesaian TA (Okt 2026 – Apr 2027, milestone M0–M6)
