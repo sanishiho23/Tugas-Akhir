@@ -78,7 +78,7 @@
 └── testbed/                        # (akan ditambahkan) docker-compose, skrip RF, collector
 ```
 
-> **Catatan:** saat ini seluruh file dokumen/literatur/panduan berada di *root* repositori. Pengorganisasian ke subfolder `docs/`, `literatur/`, `panduan/` akan dilakukan pada pembaruan berikutnya tanpa mengubah nama file.
+> **Catatan:** struktur folder `docs/` · `literatur/` · `panduan/` · `testbed/` sudah diterapkan; file telah dipindah ke subfolder masing-masing tanpa mengubah nama file.
 
 ---
 
