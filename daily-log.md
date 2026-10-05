@@ -41,11 +41,17 @@ Siapkan struktur *planning* TA (researchplan, week-1-roadmap, daily-log) & rapik
 
 ## 2026-10-06 (Selasa)
 **Short-term Goal:**
-M0: Konsultasi pembimbing — validasi judul & *gap* G1–G4.
+M0: Kickoff & Konsultasi Pembimbing — susun agenda, review draf Bab I–III, validasi judul & *gap* G1–G4.
 
 **Daily Plan:**
 - 08:00–12:00 — Siapkan agenda konsultasi; review draf Bab I–III & `Rencana_Test_Case_ZTA_Adaptif.docx`; tandai bagian perlu disetujui.
 - 13:00–17:00 — Susun daftar terbuka (pertanyaan: judul, *gap*, batasan, gaya sitasi IEEE).
+
+**Checklist (W1 · selaras `docs/planning/week-1-roadmap.md`):**
+- [ ] Agenda konsultasi + draf pertanyaan (judul, *gap*, batasan, sitasi IEEE) disusun → [evidensi: daily-log 2026-10-06]
+- [ ] Draf Bab I–III & `Rencana_Test_Case_ZTA_Adaptif.docx` di-review & ditandai → [evidensi: daily-log 2026-10-06]
+- [ ] Judul + *gap* G1–G4 divalidasi pembimbing → [evidensi: daily-log 2026-10-06]
+- [ ] Gaya sitasi IEEE diputuskan (§2.14 vs §3.4) → [evidensi: daily-log 2026-10-06]
 
 **Daily Log (planned):**
 - (isi saat dilaksanakan — lihat `docs/planning/week-1-roadmap.md` W1 Selasa)
@@ -60,6 +66,10 @@ M0: Verifikasi *gap* G1–G4 dari *full-text* Pokhrel 2024 & Winslow 2026.
 - 08:00–12:00 — Baca *full-text* Pokhrel 2024 (SIGCOMM ZTA workshop) & Winslow 2026 (ZTNA micro-seg logs); cek apakah benar-benar tidak ada perbandingan A/B/C + overhead.
 - 13:00–17:00 — Catat verifikasi *gap* (evidence-linked ke paper).
 
+**Checklist (W1 · selaras `docs/planning/week-1-roadmap.md`):**
+- [ ] *Full-text* Pokhrel 2024 & Winslow 2026 dibaca → [evidensi: daily-log 2026-10-07]
+- [ ] Catatan verifikasi *gap* G1–G4 (evidence-linked ke paper) → [evidensi: daily-log 2026-10-07]
+
 **Daily Log (planned):**
 - (isi saat dilaksanakan — lihat `docs/planning/week-1-roadmap.md` W1 Rabu)
 
@@ -72,6 +82,9 @@ M0: Finalisasi Bab I (1.1–1.6).
 **Daily Plan:**
 - 08:00–12:00 — Tulis 1.1 Latar Belakang, 1.2 Rumusan Masalah (RQ1–RQ4).
 - 13:00–17:00 — Tulis 1.3 Tujuan, 1.4 Batasan, 1.5 Manfaat, 1.6 Sistematika.
+
+**Checklist (W1 · selaras `docs/planning/week-1-roadmap.md`):**
+- [ ] Bab I 1.1–1.6 final (lokal) → [evidensi: daily-log 2026-10-08, `docs/Proyek_Akhir_ZTA_Draft.docx`]
 
 **Daily Log (planned):**
 - (isi saat dilaksanakan — lihat `docs/planning/week-1-roadmap.md` W1 Kamis)
@@ -86,6 +99,10 @@ M0: Finalisasi Bab I & kunci skenario/metrik (3 skenario A/B/C, RQ1–RQ4, TC-1�
 - 08:00–12:00 — *Lock* skenario & metrik; pastikan Bab I final (lokal).
 - 13:00–17:00 — Re-check exit criteria W1 (judul & *gap* disetujui, Bab I final, skenario terkunci).
 
+**Checklist (W1 · selaras `docs/planning/week-1-roadmap.md`):**
+- [ ] Skenario A/B/C + RQ1–RQ4 + TC-1…TC-5 terkunci → [evidensi: daily-log 2026-10-09]
+- [ ] Bab I final di-re-check (1.1–1.6) → [evidensi: daily-log 2026-10-09, `docs/Proyek_Akhir_ZTA_Draft.docx`]
+
 **Daily Log (planned):**
 - (isi saat dilaksanakan)
 
@@ -99,8 +116,23 @@ M0: Weekly report M0 & commit repo.
 - 08:00–12:00 — Susun ringkasan progres mingguan (M0).
 - 13:00–17:00 — `git add -A && git commit` & (bila diizinkan) `git push`; serahkan weekly report ke pembimbing.
 
+**Checklist (W1 · selaras `docs/planning/week-1-roadmap.md`):**
+- [ ] Weekly report M0 disusun & diserahkan → [evidensi: daily-log 2026-10-10]
+- [ ] `git commit` (push bila diizinkan) → [evidensi: commit hash]
+
 **Daily Log (planned):**
 - (isi saat dilaksanakan)
+
+---
+
+## Week 1 Checklist (Exit Criteria M0)
+> Centang saat terpenuhi; selaras dengan `docs/planning/week-1-roadmap.md` §Week 1 Exit Criteria.
+
+- [ ] Judul & *gap* G1–G4 disetujui pembimbing (06 Okt)
+- [ ] *Gap* G1–G4 terverifikasi dari *full-text* Pokhrel 2024 & Winslow 2026 (07 Okt)
+- [ ] Bab I final (1.1–1.6) (08 Okt)
+- [ ] Skenario A/B/C + RQ1–RQ4 + TC-1…TC-5 terkunci (09 Okt)
+- [ ] Weekly report M0 diserahkan + repo di-commit (10 Okt)
 
 ---
 
