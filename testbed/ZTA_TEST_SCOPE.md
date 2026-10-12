@@ -184,6 +184,65 @@ docker compose ps
 3. Latih `RandomForestClassifier` (kelas: normal vs anomali dari TC-3a..3d).
 4. Kalibrasi *threshold* skor anomali (keseimbangan deteksi vs *false-positive*).
 
+### 5.1 Training & Validasi RF (detail metode)
+Sub-bagian ini memerinci Step 1 agar metode pelatihan Random Forest eksplisit
+dan dapat diaudit oleh penguji.
+
+**Alur data**
+1. **Koleksi fitur** — dari Skenario B/C (normal) dan TC-3a..3d (abuse), setiap
+   flow/sesi diekstrak menjadi satu baris fitur (lihat daftar fitur di bawah).
+2. **Labeling** — `0 = normal`, `1 = anomali` (tiap sampel TC-3a..3d diberi label 1).
+3. **Train / test split** — `train_test_split(test_size=0.2, stratify=y,
+   random_state=42)` agar data uji tidak ikut dilatih (cegah *overfit*).
+4. **Cross-validation** — `StratifiedKFold(n_splits=5)` untuk merata-rata
+   precision/recall/F1 karena jumlah sampel terbatas.
+5. **Kalibrasi threshold** — RF mengeluarkan probabilitas anomali
+   `p = predict_proba(X)[:,1]`; pilih *threshold* (cari dari kurva PR/ROC)
+   yang menyeimbangkan deteksi vs *false-positive*. Threshold inilah yang
+   dikirim ke PDP sebagai skor risiko (dasar sifat "adaptif").
+6. **Simpan & deploy** — `joblib.dump(clf, "rf_detector_model.joblib")`, lalu
+   dimuat container `rf-detector` di Skenario C.
+
+**Fitur (X) per flow/sesi**
+- durasi koneksi, jumlah paket, byte in / out
+- *inter-arrival time* (rata-rata & simpang baku)
+- entropi ukuran paket, rasio *retransmit*
+- jumlah koneksi ke host berbeda dalam 1 sesi
+- lonjakan volume dalam jendela waktu (indikator eksfiltrasi, TC-3d)
+
+**Sketsa kode**
+```python
+import pandas as pd
+import joblib
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split, StratifiedKFold
+from sklearn.metrics import classification_report, confusion_matrix
+
+df = pd.read_csv("features.csv")            # kolom fitur + kolom 'label'
+X, y = df.drop(columns=["label"]), df["label"]
+
+# 3 & 4: split + validasi silang
+X_tr, X_te, y_tr, y_te = train_test_split(
+    X, y, test_size=0.2, stratify=y, random_state=42)
+skf = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+
+clf = RandomForestClassifier(n_estimators=100, max_depth=None,
+                             class_weight="balanced", random_state=42)
+clf.fit(X_tr, y_tr)
+
+# 5: evaluasi di data yang TIDAK dilatih
+pred = clf.predict(X_te)
+print(classification_report(y_te, pred))
+print(confusion_matrix(y_te, pred))
+
+# 6: simpan model untuk rf-detector (Skenario C)
+joblib.dump(clf, "rf_detector_model.joblib")
+```
+
+**Metrik laporan (RQ3)** — dari hasil di atas dicatat: *precision*, *recall*,
+*F1-score*, dan *confusion matrix* (TP/FP/TN/FN). Angka ini yang diisi ke
+Bab IV.2 (performa deteksi RF).
+
 ### Step 2 - Skenario A (TC-1, RQ1)
 - Jalankan tanpa ZTA; simulasikan akses tidak sah.
 - Catat rasio akses lolos sebagai *baseline* kelemahan perimeter.
