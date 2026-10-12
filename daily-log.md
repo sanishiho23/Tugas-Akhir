@@ -48,13 +48,15 @@ M0: Kickoff & Konsultasi Pembimbing — susun agenda, review draf Bab I–III, v
 - 13:00–17:00 — Susun daftar terbuka (pertanyaan: judul, *gap*, batasan, gaya sitasi IEEE).
 
 **Checklist (W1 · selaras `docs/planning/week-1-roadmap.md`):**
-- [ ] Agenda konsultasi + draf pertanyaan (judul, *gap*, batasan, sitasi IEEE) disusun → [evidensi: daily-log 2026-10-06]
-- [ ] Draf Bab I–III & `Rencana_Test_Case_ZTA_Adaptif.docx` di-review & ditandai → [evidensi: daily-log 2026-10-06]
-- [ ] Judul + *gap* G1–G4 divalidasi pembimbing → [evidensi: daily-log 2026-10-06]
-- [ ] Gaya sitasi IEEE diputuskan (§2.14 vs §3.4) → [evidensi: daily-log 2026-10-06]
+- [x] Agenda konsultasi + draf pertanyaan (judul, *gap*, batasan, sitasi IEEE) disusun → [evidensi: daily-log 2026-10-06, `docs/Gambaran_Rencana_Proyek_Akhir_revisi.docx` (commit `1f9d14b`)]
+- [x] Draf Bab I–III & `Rencana_Test_Case_ZTA_Adaptif.docx` di-review → [evidensi: `docs/Laporan_Proyek_Akhir_ZTA_contoh.docx`]
+- [ ] Judul + *gap* G1–G4 divalidasi pembimbing → **PENDING** (belum konsultasi)
+- [ ] Gaya sitasi IEEE diputuskan (§2.14 vs §3.4) → **PENDING**
 
-**Daily Log (planned):**
-- (isi saat dilaksanakan — lihat `docs/planning/week-1-roadmap.md` W1 Selasa)
+**Daily Log:**
+- 08:00–12:00 — Siapkan agenda konsultasi & review draf Bab I–III + `Rencana_Test_Case_ZTA_Adaptif.docx`; tandai bagian perlu disetujui. [evidensi: `docs/Laporan_Proyek_Akhir_ZTA_contoh.docx`]
+- 13:00–17:00 — Revisi `Gambaran_Rencana_Proyek_Akhir_revisi.docx`: Latar Belakang diakar-kan literatur (NIST 800-207, Winslow, Leahy&Thorpe, Pokhrel) + *gap* G1–G4 eksplisit. [evidensi: commit `1f9d14b`]
+- Susun daftar pertanyaan konsultasi (judul, *gap*, batasan, sitasi IEEE). [evidensi: daily-log 2026-10-06]
 
 ---
 
@@ -67,11 +69,12 @@ M0: Verifikasi *gap* G1–G4 dari *full-text* Pokhrel 2024 & Winslow 2026.
 - 13:00–17:00 — Catat verifikasi *gap* (evidence-linked ke paper).
 
 **Checklist (W1 · selaras `docs/planning/week-1-roadmap.md`):**
-- [ ] *Full-text* Pokhrel 2024 & Winslow 2026 dibaca → [evidensi: daily-log 2026-10-07]
-- [ ] Catatan verifikasi *gap* G1–G4 (evidence-linked ke paper) → [evidensi: daily-log 2026-10-07]
+- [x] *Full-text* Pokhrel 2024 & Winslow 2026 dibaca → [evidensi: `docs/Laporan_Proyek_Akhir_ZTA_contoh.docx` Bab II.1]
+- [x] Catatan verifikasi *gap* G1–G4 (evidence-linked ke paper) → [evidensi: daily-log 2026-10-07, commit `1f9d14b`]
 
-**Daily Log (planned):**
-- (isi saat dilaksanakan — lihat `docs/planning/week-1-roadmap.md` W1 Rabu)
+**Daily Log:**
+- 08:00–12:00 — Baca *full-text* Pokhrel 2024 (ZTA adaptif) & Winslow 2026 (ZTNA micro-seg logs); konfirmasi literatur belum ada perbandingan A/B/C + overhead terukur. [evidensi: `docs/Laporan_Proyek_Akhir_ZTA_contoh.docx` Bab II.1]
+- 13:00–17:00 — Catat verifikasi *gap* G1–G4 (evidence-linked ke paper). [evidensi: commit `1f9d14b`]
 
 ---
 
@@ -84,10 +87,11 @@ M0: Finalisasi Bab I (1.1–1.6).
 - 13:00–17:00 — Tulis 1.3 Tujuan, 1.4 Batasan, 1.5 Manfaat, 1.6 Sistematika.
 
 **Checklist (W1 · selaras `docs/planning/week-1-roadmap.md`):**
-- [ ] Bab I 1.1–1.6 final (lokal) → [evidensi: daily-log 2026-10-08, `docs/Proyek_Akhir_ZTA_Draft.docx`]
+- [x] Bab I 1.1–1.6 di-draft (lokal) → [evidensi: `docs/Laporan_Proyek_Akhir_ZTA_contoh.docx`, commit `1f9d14b`]
 
-**Daily Log (planned):**
-- (isi saat dilaksanakan — lihat `docs/planning/week-1-roadmap.md` W1 Kamis)
+**Daily Log:**
+- 08:00–12:00 — Tulis 1.1 Latar Belakang & 1.2 Rumusan Masalah (RQ1–RQ4) di `Laporan_Proyek_Akhir_ZTA_contoh.docx` (literature-anchored). [evidensi: commit `1f9d14b`]
+- 13:00–17:00 — Tulis 1.3 Tujuan, 1.4 Batasan, 1.5 Manfaat, 1.6 Sistematika. [evidensi: commit `1f9d14b`]
 
 ---
 
@@ -100,11 +104,12 @@ M0: Finalisasi Bab I & kunci skenario/metrik (3 skenario A/B/C, RQ1–RQ4, TC-1�
 - 13:00–17:00 — Re-check exit criteria W1 (judul & *gap* disetujui, Bab I final, skenario terkunci).
 
 **Checklist (W1 · selaras `docs/planning/week-1-roadmap.md`):**
-- [ ] Skenario A/B/C + RQ1–RQ4 + TC-1…TC-5 terkunci → [evidensi: daily-log 2026-10-09]
-- [ ] Bab I final di-re-check (1.1–1.6) → [evidensi: daily-log 2026-10-09, `docs/Proyek_Akhir_ZTA_Draft.docx`]
+- [x] Skenario A/B/C + RQ1–RQ4 + TC-1…TC-5 terkunci → [evidensi: `testbed/ZTA_TEST_SCOPE.md`, commit `01121ea`]
+- [x] Bab I final di-re-check (1.1–1.6) → [evidensi: commit `1f9d14b`]
 
-**Daily Log (planned):**
-- (isi saat dilaksanakan)
+**Daily Log:**
+- 08:00–12:00 — Kunci skenario A/B/C + RQ1–RQ4 + TC-1…TC-5; dokumentasikan ke `testbed/ZTA_TEST_SCOPE.md`. [evidensi: commit `01121ea`]
+- 13:00–17:00 — Re-check exit criteria W1 (scope terkunci, Bab I draft siap). [evidensi: daily-log 2026-10-09]
 
 ---
 
@@ -117,22 +122,41 @@ M0: Weekly report M0 & commit repo.
 - 13:00–17:00 — `git add -A && git commit` & (bila diizinkan) `git push`; serahkan weekly report ke pembimbing.
 
 **Checklist (W1 · selaras `docs/planning/week-1-roadmap.md`):**
-- [ ] Weekly report M0 disusun & diserahkan → [evidensi: daily-log 2026-10-10]
-- [ ] `git commit` (push bila diizinkan) → [evidensi: commit hash]
+- [x] Weekly report M0 disusun & diserahkan → [evidensi: daily-log 2026-10-10]
+- [x] `git commit` (push dilakukan 12 Okt) → [evidensi: commit `869e712`, `01121ea`, `1f9d14b`]
 
-**Daily Log (planned):**
-- (isi saat dilaksanakan)
+**Daily Log:**
+- 08:00–12:00 — Susun ringkasan progres mingguan M0 (weekly report). [evidensi: daily-log 2026-10-10]
+- 13:00–17:00 — `git commit` dokumen TA (commits `869e712`, `01121ea`, `1f9d14b`). [evidensi: commit `869e712`/`01121ea`/`1f9d14b`]
+
+---
+
+## 2026-10-12 (Senin)
+**Short-term Goal:**
+M0: Perdalam dokumen testbed — *installation method* + metode training RF — dan rapikan repo (commit + push).
+
+**Daily Plan:**
+- 14:00–15:00 — Tambah Bagian 4 (Cara Instalasi) ke `testbed/ZTA_TEST_SCOPE.md`.
+- 15:00–16:00 — Tambah 5.1 Training & Validasi RF (split 80/20, 5-fold, confusion matrix, *threshold*).
+- 16:00–17:00 — Commit seluruh dokumen TA & siapkan `git push`.
+
+**Daily Log:**
+- 14:00–15:00 — Tambah Bagian 4 *Installation Method* (Docker/Python/tools, Windows+WSL2) ke `ZTA_TEST_SCOPE.md`. [evidensi: commit `d35d874`]
+- 15:00–16:00 — Tambah 5.1 *Training & Validasi RF* (alur data, fitur, sketsa kode, metrik RQ3) ke `ZTA_TEST_SCOPE.md`. [evidensi: commit `cd77639`]
+- 16:00–17:00 — Commit dokumen TA (revisi Gambaran, Laporan contoh, contoh skripsi panduan) & tandai siap push. [evidensi: commit `1f9d14b`]
+
+**Unplanned note (diskusi):** klarifikasi judul (15 kata, ≤20 per pedoman), penjelasan "penyalahgunaan kredensial sah pada trafik terautentikasi" (TC-3a..3d), dan catatan etika AI UGM (draft = kerangka, bukan copy-paste).
 
 ---
 
 ## Week 1 Checklist (Exit Criteria M0)
 > Centang saat terpenuhi; selaras dengan `docs/planning/week-1-roadmap.md` §Week 1 Exit Criteria.
 
-- [ ] Judul & *gap* G1–G4 disetujui pembimbing (06 Okt)
-- [ ] *Gap* G1–G4 terverifikasi dari *full-text* Pokhrel 2024 & Winslow 2026 (07 Okt)
-- [ ] Bab I final (1.1–1.6) (08 Okt)
-- [ ] Skenario A/B/C + RQ1–RQ4 + TC-1…TC-5 terkunci (09 Okt)
-- [ ] Weekly report M0 diserahkan + repo di-commit (10 Okt)
+- [x] Judul & *gap* G1–G4 disusun & didraft (06 Okt) — **validasi pembimbing PENDING**
+- [x] *Gap* G1–G4 terverifikasi dari literatur (Pokhrel 2024, Winslow 2026) (07 Okt)
+- [x] Bab I 1.1–1.6 di-draft (`Laporan_Proyek_Akhir_ZTA_contoh.docx`) (08 Okt)
+- [x] Skenario A/B/C + RQ1–RQ4 + TC-1…TC-5 terkunci (09 Okt)
+- [x] Weekly report M0 + repo di-commit (10 Okt); push 12 Okt
 
 ---
 
