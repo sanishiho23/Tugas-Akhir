@@ -2,9 +2,10 @@
 
 Dokumen ini memuat **ruang lingkup pengujian (test scope)** untuk purwarupa
 Arsitektur Zero Trust Adaptif berbasis Machine Learning: perangkat yang dipakai
-(*tools*), prasyarat (*requirements*), dan langkah kerja (*steps*). Semua terikat
-ke rencana uji **TC-1 sampai TC-5** dan *research question* **RQ1 sampai RQ4**
-lihat juga `docs/Rencana_Test_Case_ZTA_Adaptif.docx` dan `docs/Laporan_Proyek_Akhir_ZTA_contoh.docx`.
+(*tools*), prasyarat (*requirements*), **cara instalasi (*installation method*)**,
+dan langkah kerja (*steps*). Semua terikat ke rencana uji **TC-1 sampai TC-5**
+dan *research question* **RQ1 sampai RQ4**. Lihat juga
+`docs/Rencana_Test_Case_ZTA_Adaptif.docx` dan `docs/Laporan_Proyek_Akhir_ZTA_contoh.docx`.
 
 Tujuan pengujian: membuktikan secara empiris bahwa ZTA adaptif (Skenario C = ZTA
 statis + Random Forest) lebih baik menangani penyalahgunaan kredensial sah
@@ -54,9 +55,9 @@ Empat *container* Docker, dihubungkan lewat *bridge network* dan mTLS:
 - Jika butuh beban tinggi: VM/cloud (NTUST atau akses remote, Nov 2026 - Jan 2027 per program TEEP).
 
 ### 3.2 Software
-- OS: Linux / macOS / Windows + WSL2.
+- OS: Windows 10/11 + **WSL2** (direkomendasikan) atau Linux/macOS.
 - Docker Engine + Docker Compose v2 terpasang.
-- Python 3.11 dan `pip install scikit-learn pandas numpy`.
+- Python 3.11 dan `scikit-learn`, `pandas`, `numpy` terpasang (lihat bagian 4).
 - (Opsional) Wireshark (`tshark`) untuk *capture* trafik.
 
 ### 3.3 Dataset / Traffic
@@ -70,7 +71,103 @@ Empat *container* Docker, dihubungkan lewat *bridge network* dan mTLS:
 
 ---
 
-## 4. Steps / Langkah Pengujian
+## 4. Cara Instalasi (Installation Method)
+
+Panduan ini ditulis untuk **Windows + WSL2** (host pengembangan utama). Setiap
+sub-bagian bisa dilewati jika komponennya sudah ada. Jalankan perintah di
+**terminal WSL2 (Ubuntu)**, kecuali disebutkan "PowerShell".
+
+### 4.1 Prasyarat umum & clone repo
+```bash
+# di WSL2 Ubuntu
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y git curl build-essential python3-venv python3-pip
+
+# clone repo Tugas Akhir
+git clone https://github.com/sanishiho23/Tugas-Akhir.git
+cd Tugas-Akhir/testbed
+```
+
+### 4.2 Install Docker Engine + Docker Compose (WSL2)
+Cara paling mudah: pasang **Docker Desktop** di Windows, lalu aktifkan WSL2 backend.
+```powershell
+# PowerShell (Windows) — instal Docker Desktop via winget
+winget install -e --id Docker.DockerDesktop
+```
+Setelah instalasi: buka Docker Desktop → **Settings → Resources → WSL Integration**
+→ aktifkan distro Ubuntu kamu. Lalu verifikasi dari WSL2:
+```bash
+# di WSL2
+docker --version                 # expect Docker Engine 24+
+docker compose version           # expect Docker Compose v2.x
+docker run --rm hello-world      # smoke test (harus cetak "Hello from Docker")
+```
+Jika `docker` menolak koneksi, jalankan `sudo usermod -aG docker $USER` lalu
+**logout-login ulang** WSL (`wsl --shutdown` di PowerShell).
+
+> Alternatif tanpa Docker Desktop (WSL2 murni): ikuti panduan
+> `get.docker.com` — `curl -fsSL https://get.docker.com | sh` lalu
+> `sudo service docker start`.
+
+### 4.3 Install Python 3.11 + virtual environment + paket ML
+```bash
+# WSL2 Ubuntu — pasang Python 3.11 (jika belum)
+sudo apt install -y software-properties-common
+sudo add-apt-repository -y ppa:deadsnakes/ppa
+sudo apt update && sudo apt install -y python3.11 python3.11-venv python3.11-dev
+
+# buat virtual environment khusus TA
+python3.11 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+
+# paket ML & pendukung (pin agar reproducible)
+pip install "scikit-learn==1.5.*" "pandas==2.2.*" "numpy==1.26.*" "scapy==2.5.*"
+```
+Simpan daftar paket agar bisa diulang:
+```bash
+pip freeze > requirements.txt
+```
+
+### 4.4 Install alat ukur jaringan (iperf3, tshark)
+```bash
+# WSL2 Ubuntu
+sudo apt install -y iperf3 iputils-ping mtr-tiny
+# tshark (opsional, untuk capture fitur trafik)
+sudo apt install -y tshark
+```
+Verifikasi:
+```bash
+iperf3 --version
+tshark --version
+```
+
+### 4.5 Build & jalankan testbed container
+```bash
+cd Tugas-Akhir/testbed
+docker compose build        # bangun image pdp/ztp-gateway/auth/rf-detector
+docker compose up -d        # jalankan di background
+docker compose ps           # cek keempat container sehat
+```
+
+### 4.6 Smoke test (verifikasi instalasi berhasil)
+```bash
+# 1) container sehat
+docker compose ps --format "table {{.Name}}\t{{.State}}\t{{.Status}}"
+
+# 2) python env & RF bisa diimpor
+source .venv/bin/activate
+python -c "import sklearn, pandas, numpy; print('sklearn', sklearn.__version__)"
+
+# 3) koneksi antar container (contoh: client -> pdp via gateway)
+docker compose exec client ping -c 3 pdp
+```
+Jika ketiga langkah di atas bersih, instalasi dianggap berhasil dan kamu bisa
+lanjut ke **Bagian 5 (Steps)**.
+
+---
+
+## 5. Steps / Langkah Pengujian
 
 ### Step 0 - Persiapan
 ```bash
@@ -110,7 +207,7 @@ docker compose ps
 
 ---
 
-## 5. Metrics (pemetaan RQ)
+## 6. Metrics (pemetaan RQ)
 
 | RQ | Metrik | Instrumen | Skenario |
 |----|--------|-----------|----------|
@@ -121,7 +218,7 @@ docker compose ps
 
 ---
 
-## 6. Pemetaan TC -> RQ -> Skenario
+## 7. Pemetaan TC -> RQ -> Skenario
 
 | TC | Fokus | RQ | Skenario |
 |----|-------|----|----------|
@@ -136,7 +233,7 @@ docker compose ps
 
 ---
 
-## 7. Exit Criteria (kapan scope dianggap selesai)
+## 8. Exit Criteria (kapan scope dianggap selesai)
 - Keempat container berjalan & sehat pada Skenario C.
 - Model RF terlatih dengan *threshold* terkalibrasi.
 - TC-1 sampai TC-5 tereksekusi; metrik tercatat minimal 3 ulangan.
@@ -144,7 +241,7 @@ docker compose ps
 
 ---
 
-## 8. Limitations
+## 9. Limitations
 - Uji dilakukan di testbed skala laboratorium, bukan produksi.
 - Angka *overhead* bersifat relatif antar skenario, bukan angka absolut produksi.
 - RF dipakai sebagai komponen yang diintegrasikan, bukan algoritma baru.
